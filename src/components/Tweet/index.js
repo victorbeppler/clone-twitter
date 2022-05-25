@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Container , Retweeted, RocketseetIcon, Body, Avatar, Content,Header, Description, ImageContent, Icons, CommentIcon, RetweetIcon, LikeIcon} from './styles';
+import { Container , Retweeted, RocketseetIcon, Body, Avatar, Content,Header,Dot, Description, ImageContent, Status, Icons, CommentIcon, RetweetIcon, LikeIcon} from './styles';
 
 function Tweet() {
   return (
@@ -35,7 +35,9 @@ function Tweet() {
                         <LikeIcon />
                         311
                     </Status>
+                </Icons>
             </Content>
+            </Body>
       </Container>
   );
 }
