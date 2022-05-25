@@ -82,6 +82,10 @@ export const ButtonMenu = styled.div`
     justify-content: space-between;
 
     padding: 8px min(46px, max(10vw, 10px));
+
+    @media (min-width: 1280px) {
+        display: none;
+    }
 `;
 export const HomeIncon = styled(Home)`
     ${iconCSS}
