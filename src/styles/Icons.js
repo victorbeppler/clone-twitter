@@ -12,3 +12,4 @@ export { Person, Cake, Favorite, Share } from "styled-icons/material";
 export { ArrowLeft } from "styled-icons/heroicons-solid";
 export { Chat } from "styled-icons/heroicons-outline";
 export { Retweet } from "styled-icons/entypo";
+export { Twitter } from "styled-icons/boxicons-logos";

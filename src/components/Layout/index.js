@@ -1,14 +1,14 @@
 import React from "react";
 
 import Main from "../main";
-
-import { Container, Wrapper } from './styles';
+import MenuBar from "../MenuBar";
+import { Container, Wrapper } from "./styles";
 
 function Layout() {
     return (
         <Container>
             <Wrapper>
-                {/* <MenuBar></MenuBar> */}
+                <MenuBar></MenuBar>
                 <Main />
                 {/* <SideBar></SideBar> */}
             </Wrapper>
