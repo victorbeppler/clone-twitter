@@ -6,7 +6,7 @@ function List({ title, elements }) {
     return (
         <Container>
             <Item>
-                <Title>title</Title>
+                <Title>{title}</Title>
             </Item>
 
             {elements.map((element, index) => (

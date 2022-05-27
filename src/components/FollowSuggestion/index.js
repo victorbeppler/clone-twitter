@@ -1,19 +1,21 @@
 import React from "react";
 
-import { Container, Avatar, Info, FollowButton } from "./styles";
+import * as S from "./styles";
 
-function FollowSuggestion({ name, nickname }) {
+function FollowSuggestion({ img ,name, nickname }) {
     return (
-        <Container>
+        <S.Container>
             <div>
-                <Avatar />
-                <Info>
+                <S.Avatar img={img} />
+
+                <S.Info>
                     <strong>{name}</strong>
                     <span>{nickname}</span>
-                </Info>
+                </S.Info>
             </div>
-            <FollowButton outlined>Seguir</FollowButton>
-        </Container>
+
+            <S.FollowButton outlined>Seguir</S.FollowButton>
+        </S.Container>
     );
 }
 
