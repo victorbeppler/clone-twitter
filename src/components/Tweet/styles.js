@@ -90,9 +90,9 @@ export const ImageContent = styled.div`
     margin-top: 12px;
     width: 100%;
     height: min(285px, max(175px, 41vw));
-    background-image: url("https://media.istockphoto.com/photos/open-book-and-steaming-cup-of-coffee-on-wooden-table-picture-id1334372779?b=1&k=20&m=1334372779&s=170667a&w=0&h=lfTulHKBslG9K9UFwiV6IaM9B5eRM7wIGgWYr-BNb9A=");
+    background-image: ${(props) => `url(${props.image})`};
     border-radius: 14px;
-
+    background-size: cover;
     cursor: pointer;
     &:hover {
         opacity: 0.7;
@@ -136,18 +136,18 @@ export const Status = styled.div`
             color: var(--gray);
         }
     }
-    &:nth-child(2) {
+    /* &:nth-child(2) {
         color: var(--retweet);
         > svg path {
             fill: var(--retweet);
         }
-    }
-    &:nth-child(3) {
+    } */
+    /* &:nth-child(3) {
         color: var(--like);
         > svg {
             fill: var(--like);
         }
-    }
+    } */
 `;
 
 const iconCSS = css`
@@ -160,7 +160,9 @@ export const CommentIcon = styled(Chat)`
 `;
 export const RetweetIcon = styled(Retweet)`
     ${iconCSS}
+    fill: ${(props) => (props.isActive ? "var(--retweet)" : "var(--gray)")};
 `;
 export const LikeIcon = styled(Favorite)`
     ${iconCSS}
+    fill: ${(props) => (props.isActive ? 'var(--like)' : 'var(--gray)')};
 `;
