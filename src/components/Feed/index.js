@@ -7,7 +7,7 @@ import baseBack from "../../config/http-base-url-back";
 function Feed() {
     const [tweets, setTweet] = useState([]);
     useEffect(() => {
-        baseBack.get("/tweet").then(({ data }) => {
+        baseBack.get("/tweets").then(({ data }) => {
             setTweet(data.tweet);
             console.log("Busca", data.tweet);
         });
@@ -25,6 +25,7 @@ function Feed() {
                         imageUrl={tweet.imageURL}
                         dataPublicacao={tweet.date}
                         retweet={tweet.retweets}
+                        comments={tweet.comments}
                     />
                 ))}
             </Tweets>

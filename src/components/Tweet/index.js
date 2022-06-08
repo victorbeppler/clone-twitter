@@ -19,25 +19,23 @@ import {
 import baseBack from "../../config/http-base-url-back";
 
 export default function Tweet(props) {
-    const [like, setLike] = useState(props.like);
+    const [likeCount, setLike] = useState(props.like);
     const [curtiu, setCurtiu] = useState(false);
-    const [retweet, setRetweet] = useState(props.retweet);
+    const [retweetCount, setRetweet] = useState(props.retweet);
     const [retweetado, setRetweetado] = useState(false);
-    console.log("Retweets: ", props.reetweet);
+    const [commentCount, setComment] = useState(props.comment);
+    const [comentado, setComentado] = useState(false);
+
     const handleLike = async () => {
         await new Promise((resolve) => setTimeout(resolve, 2000));
         if (curtiu) {
-            await baseBack.post("/removeLikeTweet", {
-                idTweet: props.idTweet,
-            });
-            setLike(like - 1);
+            await baseBack.delete(`/tweet/${props.idTweet}/favorite`);
+            setLike(likeCount - 1);
             setCurtiu(false);
             return;
         } else {
-            await baseBack.post("/likeTweet", {
-                idTweet: props.idTweet,
-            });
-            setLike(like + 1);
+            await baseBack.post(`/tweet/${props.idTweet}/favorite`);
+            setLike(likeCount + 1);
             setCurtiu(true);
             return;
         }
@@ -45,21 +43,19 @@ export default function Tweet(props) {
 
     const handleRetweet = async () => {
         await new Promise((resolve) => setTimeout(resolve, 2000));
-        if (retweet) {
-            await baseBack.post("/removeRetweet", {
-                idTweet: props.idTweet,
-            });
-            setRetweet(retweet - 1);
+        if (retweetado) {
+            await baseBack.post(`/tweets/${props.idTweet}/retweets`);
+            setRetweet(retweetCount - 1);
             setRetweetado(false);
+            return;
         } else {
-            await baseBack.post("/retweetar", {
-                idTweet: props.idTweet,
-            });
-            setRetweet(retweet + 1);
+            await baseBack.post(`/tweets/${props.idTweet}/retweets`);
+            setRetweet(retweetCount + 1);
             setRetweetado(true);
+            return;
         }
     };
-    console.log("Status", curtiu);
+
     return (
         <Container>
             <Retweeted>
@@ -84,11 +80,11 @@ export default function Tweet(props) {
                         </Status>
                         <Status>
                             <RetweetIcon onClick={handleRetweet} isActive={retweetado} />
-                            {retweet}
+                            {retweetCount}
                         </Status>
                         <Status>
                             <LikeIcon onClick={handleLike} isActive={curtiu} />
-                            {like}
+                            {likeCount}
                         </Status>
                     </Icons>
                 </Content>
