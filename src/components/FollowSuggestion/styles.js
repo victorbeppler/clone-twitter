@@ -35,4 +35,5 @@ export const Info = styled.div`
 
 export const FollowButton = styled(Button)`
     padding: 6px 17px;
+    fill: ${(props) => (props.isActive ? "var(--twitter)" : "var(--white)")};
 `;

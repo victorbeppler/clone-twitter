@@ -1,8 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
+import baseBack from "../../config/http-base-url-back";
 
 import * as S from "./styles";
 
-function FollowSuggestion({ img ,name, nickname }) {
+function FollowSuggestion({ id, img, name, nickname }) {
+    const [follow, setfollow] = useState(false);
+    const handleClick = async () => {
+        console.log("idFollow", id);
+        if (follow) {
+            console.log("Deixar de seguir");
+            await baseBack.delete(`/${id}/FollowSuggestion`);
+            setfollow(false);
+        } else {
+            console.log("Seguir");
+            await baseBack.put(`/${id}/FollowSuggestion`);
+            setfollow(true);
+        }
+    };
     return (
         <S.Container>
             <div>
@@ -14,7 +28,9 @@ function FollowSuggestion({ img ,name, nickname }) {
                 </S.Info>
             </div>
 
-            <S.FollowButton outlined>Seguir</S.FollowButton>
+            <S.FollowButton outlined onClick={handleClick} isActive={follow}>
+                Seguir
+            </S.FollowButton>
         </S.Container>
     );
 }
